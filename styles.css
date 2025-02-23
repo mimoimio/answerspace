@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    font-family: Comfortaa;
+    color: white;
+}
+
+
+h1 {
+    text-shadow: #fff 0 0 1rem;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+
+body {
+    background:
+        radial-gradient(#abe4, #001c 3%)  center,
+        radial-gradient(#abee, #0006 7%)  center,
+        radial-gradient(#abed, #0008 12%) center,
+        radial-gradient(#abec, #0009 18%) center,
+        radial-gradient(#abeb, #000c 25%) center,
+        radial-gradient(#abea, #000e 39%) center,
+        black;
+    background-size:
+        4.5rem 4.5rem,
+        4.4rem 4.4rem,
+        4.3rem 4.3rem,
+        4.2rem 4.2rem,
+        4.1rem 4.1rem,
+        4rem 4rem,
+        auto;
+
+}
+
+.answer-item{
+    display: flex;
+    flex-direction: column;
+    background: #001a;
+    border: #445 1px solid;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+p {
+    height: 100px;
+    text-overflow: 'ellipsis';
+    word-wrap: break-word;
+    overflow:hidden;
+    text-align: justify;
+}
