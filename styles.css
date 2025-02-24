@@ -14,7 +14,7 @@ h1 {
 
 body {
     background:
-        radial-gradient(#abe4, #001c 3%)  center,
+        radial-gradient(#abe4, #224c 3%)  center,
         radial-gradient(#abee, #0006 7%)  center,
         radial-gradient(#abed, #0008 12%) center,
         radial-gradient(#abec, #0009 18%) center,
@@ -42,8 +42,10 @@ body {
 }
 
 p {
+    /*
     height: 100px;
     text-overflow: 'ellipsis';
+    */
     word-wrap: break-word;
     overflow:hidden;
     text-align: justify;
