@@ -5,6 +5,13 @@
     color: white;
 }
 
+nav {
+    background: #20203fff;
+    box-shadow: #0008 0 0 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
 h1 {
     text-shadow: #fff 0 0 1rem;
@@ -14,12 +21,12 @@ h1 {
 
 body {
     background:
-        radial-gradient(#abe4, #224c 3%)  center,
-        radial-gradient(#abee, #0006 7%)  center,
-        radial-gradient(#abed, #0008 12%) center,
-        radial-gradient(#abec, #0009 18%) center,
-        radial-gradient(#abeb, #000c 25%) center,
-        radial-gradient(#abea, #000e 39%) center,
+        radial-gradient(#abe4, #224c 3%)  center top,
+        radial-gradient(#abee, #0006 7%)  center top,
+        radial-gradient(#abed, #0008 12%) center top,
+        radial-gradient(#abec, #0009 18%) center top,
+        radial-gradient(#abeb, #000c 25%) center top,
+        radial-gradient(#abea, #000e 39%) center top,
         black;
     background-size:
         4.5rem 4.5rem,
@@ -35,10 +42,11 @@ body {
 .answer-item{
     display: flex;
     flex-direction: column;
-    background: #001a;
+    /* background: #001a; */
     border: #445 1px solid;
     border-radius: 1rem;
     padding: 1rem;
+    height: fit-content;
 }
 
 p {
