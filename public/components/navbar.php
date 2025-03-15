@@ -1,13 +1,4 @@
 <?php
-if (isset($_POST['logout'])) {
-    session_destroy();
-    header('Location: /');
-    exit;
-} else if (isset($_POST['login'])) {
-    session_destroy();
-    header('Location: /login');
-    exit;
-}
 ?>
 <nav class='flex w-full justify-between p-4 pr-[10rem])'>
     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>

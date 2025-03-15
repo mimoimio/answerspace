@@ -1,13 +1,26 @@
 <?php
 // echo "<script>alert('Not logged In')</script>";
 session_start();
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: /');
+    exit;
+} else if (isset($_POST['login'])) {
+    session_destroy();
+    header('Location: /login');
+    exit;
+}
+
 if (!isset($_SESSION['logged_in'])) {
     // echo "<script>alert('Not logged In: $_SESSION')</script>";
     // header("Location: login");
     // exit();
 }
 // $db = new PDO("mysql:host=localhost;dbname=answerdb;charset=utf8", 'root', '');
-$db = new PDO("mysql:host=localhost;port=3306;dbname=answerdb;charset=utf8", 'root', '');
+// $db = new PDO("mysql:host=localhost;port=3306;dbname=answerdb;charset=utf8", 'root', '');
+$db = new PDO("mysql:host=db;port=3306;dbname=answerdb;charset=utf8", 'root', 'mior');
+
 // id, answer_text, user_id, time_created
 
 if (isset($_POST['answer_text'])) {
@@ -18,14 +31,9 @@ if (isset($_POST['answer_text'])) {
             'user_id' => $_SESSION['user_id']
         ]
     );
-
     header('Location: /');
     exit;
 }
-
-// $stmt = $db->prepare("SELECT * FROM answers ORDER BY time_created DESC");
-// $stmt->execute();
-// $answers = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -34,17 +42,19 @@ if (isset($_POST['answer_text'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="/styles.css">
     <title>Mior's AnswerSpace</title>
 
 </head>
 
 <body>
-    <?php include 'components/navbar.php'; ?>
+    <?php 
+    include 'components/navbar.php'; 
+    ?>
+    <div class="bg-blue-500 text-white p-4">Tailwind Test</div>
+
     <div class="container mx-auto flex flex-col p-4 gap-4">
-        <?php
-        ?>
         <h1 class="text-[8dvw] drop-shadow-[0_0_4rem_rgba(1,1,1,0.5)] text-center text-white tracking-[.5rem]">
             AnswerSpace
         </h1>

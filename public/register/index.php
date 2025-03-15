@@ -6,7 +6,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     exit();
 }
 
-$db = new PDO("mysql:host=localhost;port=3306;dbname=answerdb;charset=utf8", 'root', '');
+$db = new PDO("mysql:host=db;port=3306;dbname=answerdb;charset=utf8", 'root', 'mior');
 
 // Get posted username and password
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -64,8 +64,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register - AnswerSpace</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body class="bg-gray-100">
