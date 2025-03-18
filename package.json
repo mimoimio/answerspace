@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "@tailwindcss/cli": "^4.0.14"
+    "@tailwindcss/cli": "^4.0.14",
+    "bootstrap": "^5.3.3",
+    "boxicons": "^2.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

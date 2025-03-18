@@ -14,7 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = $_POST['password'] ?? '';
 
     if (!$username || !$password) {
-        header("Location: login?error=1");
+        header("Location: /login?error=1");
         exit();
     }
 
@@ -32,12 +32,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             header("Location: /");
             exit();
         } else {
-            header("Location: login?error=1");
+            header("Location: /login?error=1");
             exit();
         }
     } catch (PDOException $e) {
         // Optionally log the error
-        header("Location: login?error=1");
+        header("Location: /login?error=1");
         exit();
     }
 }
@@ -49,6 +49,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - AnswerSpace</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -57,12 +58,20 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <h1 class="text-[2rem] text-center text-white tracking-[.5rem]">
             AnswerSpace
         </h1>
+        <?php
+        echo"<pre>".
+        var_export($_POST)
+        .
+        var_export($_SESSION)
+        .
+        "</pre>"
+        ?>
         <div class="bg-[#fff2] shadow-md rounded-lg p-8 max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
             <?php if (isset($_GET['error'])): ?>
                 <p class="mb-4 text-red-500 text-center">Invalid username or password.</p>
             <?php endif; ?>
-            <form action="" method="post">
+            <form action="/login/" method="post">
                 <div class="mb-4">
                     <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
                     <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300" required placeholder="3 - 8 characters, e.g., Mior ">
@@ -72,7 +81,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300" required placeholder="3 - 8 characters, e.g., pass1234">
                 </div>
                 <div class="flex items-center justify-between">
-                    <a href="register">Register</a>
+                    <a href="/register/">Register</a>
                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Login
                     </button>

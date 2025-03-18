@@ -2,7 +2,7 @@
 session_start();
 // if already logged in, go to root dir
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // header("Location: /");
+    header("Location: /");
     exit();
 }
 
@@ -10,7 +10,7 @@ $db = new PDO("mysql:host=db;port=3306;dbname=answerdb;charset=utf8", 'root', 'm
 
 // Get posted username and password
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    echo "<script>alert('username and password is set')</script>";
+    // echo "<script>alert('username and password is set')</script>";
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
@@ -21,7 +21,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Check if user exists
-        if ($user['username'] == $username) {
+        if ($user && $user['username'] == $username) {
             echo "<script>alert('$username is already registered')</script>";
         } else {
             $stmt = $db->prepare("INSERT INTO users(username, password) VALUES(:username, :password)");
@@ -40,9 +40,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 $_SESSION['logged_in'] = true;
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['user_id'] = $user['id'];
-                echo "<script>alert('session successful')</script>";
+                // echo "<script>alert('session successful')</script>";
             } else {
-                echo "<script>alert('session unsuccessful')</script>";
+                // echo "<script>alert('session unsuccessful')</script>";
                 session_destroy();
             }
             header("Location: /");
@@ -64,6 +64,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register - AnswerSpace</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -77,7 +78,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             <!-- <?php if (isset($_GET['error'])): ?>
                 <p class="mb-4 text-red-500 text-center">Invalid username already registered.</p>
             <?php endif; ?> -->
-            <form action="" method="post">
+            <form action="/register/" method="post">
                 <div class="mb-4">
                     <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
                     <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300" required minlength="3" maxlength="8">
@@ -91,7 +92,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     <input type="password" id="confirm_password" name="confirm_password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300" required minlength="3" maxlength="8">
                 </div> -->
                 <div class="flex items-center justify-between">
-                    <a href="login">Return to Login</a>
+                    <a href="/login/">Return to Login</a>
                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Register
                     </button>
