@@ -116,7 +116,15 @@ if (isset($_POST['answer_text'])) {
                             </div>
                             <h2 class="text-xl font-semibold "><?php echo htmlspecialchars($answer['username']); ?></h2>
                         </div>
-                        <box-icon name='dots-vertical-rounded' color='#fff'></box-icon>
+                        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $answer['user_id']): ?>
+                            <box-icon name="dots-vertical-rounded" color="#fff"></box-icon>
+                        <?php endif; ?>
+
+
+
+
+
+
                     </div>
                     <pre class="text-gray-700 mb-4 text-wrap break-words"><?php echo htmlspecialchars($answer['answer_text']); ?></pre>
                     <p style="color: #668;"><?php echo htmlspecialchars($answer['time_created']) ?></p>
